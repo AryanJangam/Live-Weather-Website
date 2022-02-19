@@ -1,0 +1,15 @@
+{
+  "name": "nodeproject",
+  "version": "1.0.0",
+  "description": "a node js projcet",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "AJ",
+  "license": "ISC",
+  "dependencies": {
+    "requests": "^0.3.0"
+  }
+}

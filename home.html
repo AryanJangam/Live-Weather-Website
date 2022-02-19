@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * {
+    margin: 0%;
+    padding: 0%;
+  }
+  body {
+   background-color: rgb(116, 234, 238);
+      font-family:monospace ;
+      text-decoration-color: crimson;
+      }
+  .box {
+    margin-left: 600px;
+    padding-left: 30px;
+    margin-top: 100px;
+    margin-right: 600px;
+    background-color:rgb(236, 194, 139);
+    border-radius: 10px;
+  }
+  #weathercondition {
+    padding: 100px;
+    padding-bottom: 30px;
+    padding-top: 50px;
+  }
+  .information {
+    padding: 10px;
+  }
+  .location {
+    padding: 10px;
+    padding-left: 5px;
+  }
+  #Date {
+    padding: 10px;
+    padding-left: 30px;
+  }
+  .temp {
+    padding: 10px;
+    padding-left: 70px;
+    font-style:initial;
+    font-weight:700;
+  }
+  .tempMinMax {
+    padding: 5px;
+    padding-left: 30px;
+    padding-bottom: 100px;
+  }
+  .fa-street-view {
+      padding-right: 10px;
+    animation: rotates 2s linear infinite alternate;
+  }
+  @keyframes rotates{
+   from{
+     transform: translateX(-0.5rem);
+  
+   }
+   from{
+    transform: translateX(0.5rem);
+    
+  }
+  }
+  #weathercondition .fas{
+      padding-right: 50px;
+    animation: anime 3s linear infinite alternate;
+  }
+  
+  @keyframes anime{
+    from{
+      transform:scale(0.8);
+    }
+    to{
+      transform:scale(1.2);
+    }
+  }
+  
+  #t{
+      padding-left: 20px;
+  }
+  
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Live_Weather</title>
+</head>
+<body>
+    <div class="box",background-image:url('2.jpg')>
+        <br>
+        <b> 
+        <div id = "t">Your Live_Weather destination !</div> 
+        <div class="wave-one"></div>
+        <div class="wave-two"></div>
+        <div class="wave-three"></div>
+        <div id="weathercondition">
+            <i class="fas fa-sun fa-5x" style="color:rgb(233, 114, 17);"></i> 
+        </div>
+        <div class="information">
+        <h2 class="location"><i class="fas fa-street-view"style="color:black;"></i><b> {%location%},{%country%}</h2>
+            <p id = "Date">WED | Sep 29 | 12:04AM</p>
+        <h1 class="temp">{%temp%}&deg;F</h1>
+        <h3 class="tempMinMax">Min:{%mintemp%}&deg;F,Max:{%maxtemp%}&deg;F</h3>
+        </div>
+    </div>
+
+    <script>
+        const curDate =document.getElementById("Date");
+        let weathercon =document.getElementById("weathercondition");
+        const tempstatus ="Clouds";
+        const getCurrentDay = ()=>{
+            var weekday=[
+            "Monday",
+            "Tuesday",,            
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+            ]
+            var currentTime = new Date();
+            var day=(weekday[currentTime.getDay()]);
+            return day;
+        }
+        const getCurrentTime =()=>{
+            x=new Date();
+            var months=[
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec",
+            ]
+            var month =x.getMonth()+1;
+            var date = x.getDate();
+            var year =x.getFullYear();
+            var hours =x.getHours();
+            var minutes =x.getMinutes();
+            var period= "am";
+            if (hours>11){
+                period="pm";
+            }else{
+                hours =hours-12;
+            }
+            var time =(months[month]+" | "+date+" | "+year+"<br><br>"+"  @  "+" Time=>  "+hours+":"+minutes+" "+period);
+            return time;
+        }
+        curDate.innerHTML= getCurrentDay()+ " | " +getCurrentTime();
+        getCurrentTime();
+        // const tempStatus ="{%tempstatus%}";
+        // if(tempStatus=="Sunny"){
+        //   weathercon.innerHTML = <i class="fas fa-sun fa-5x" style="color:rgb(233, 114, 17);"></i> 
+        // }
+        // else if(tempStatus=="Clouds"){
+        //   weathercon.innerHTML = <i class="fas fa-cloud fa-5x" style="color:blue"></i> 
+        // }
+        // else if(tempStatus=="Rainy"){
+        //   weathercon.innerHTML = <i class="fas fa-cloud-rain fa-5x" style="color:white;"></i> 
+        // }
+        // else{
+        //   weathercon.innerHTML = <i class="fas fa-cloud fa-5x" style="color:violet;"></i> 
+        // }
+    </script>
+</body>
+</html>
